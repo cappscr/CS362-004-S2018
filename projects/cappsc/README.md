@@ -1,2 +1,2 @@
 #Create README.md
-Christopher Capps, cappsc
+This is my assignment-1 submission!
