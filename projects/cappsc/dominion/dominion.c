@@ -644,13 +644,15 @@ int getCost(int cardNumber)
 }
 
   //refactored adventurer card
-  int adventurerCard(struct gameState *state, int* drawntreasure, int* currentPlayer, int* cardDrawn, int temphand[MAX_HAND], int* z)
+  int adventurerCard(struct gameState *state, int* drawntreasure, int* currentPlayer, int temphand[MAX_HAND], int* z)
   {
-    while (*drawntreasure < 2)
+    int cardDrawn;
+    // Intentional bug that only draws 1 treasure card instead of 2
+    while (*drawntreasure < 1)
     {
       if (state->deckCount[*currentPlayer] < 1)
       { //if the deck is empty we need to shuffle discard and add to deck
-        shuffle(currentPlayer, state);
+        shuffle(*currentPlayer, state);
       }
       drawCard(*currentPlayer, state);
       cardDrawn = state->hand[*currentPlayer][state->handCount[*currentPlayer] - 1]; //top card of hand is most recently drawn card.
@@ -674,7 +676,7 @@ int getCost(int cardNumber)
   int smithyCard(struct gameState *state, int* handPos, int* currentPlayer)
   {
     //+3 Cards
-    for (i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
     {
       drawCard(*currentPlayer, state);
     }
@@ -703,16 +705,18 @@ int getCost(int cardNumber)
     drawCard(*currentPlayer, state);
 
     //+1 Actions
-    state->numActions++;
+    // Intentional bug to add 2 actions instead of 1
+    state->numActions = state->numActions + 2;
 
     //discard card from hand
     discardCard(*handPos, *currentPlayer, state, 0);
     return 0;
   }
 
-  int seaHagCard(struct gameState state, int* currentPlayer)
+  int seaHagCard(struct gameState *state, int* currentPlayer)
   {
-    for (i = 0; i < state->numPlayers; i++)
+    // Intentional error to skip the first player
+    for (int i = 1; i < state->numPlayers; i++)
     {
       if (i != *currentPlayer)
       {
@@ -749,7 +753,7 @@ int getCost(int cardNumber)
     switch (card) 
     {
     case adventurer:
-      adventurerCard(state, &drawntreasure, &currentPlayer, &cardDrawn, temphand, &z);
+      adventurerCard(state, &drawntreasure, &currentPlayer, temphand, &z);
 			
     case council_room:
       //+4 Cards
