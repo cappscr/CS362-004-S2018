@@ -7,3 +7,9 @@ Cards Refactored:
 3. Great Hall
 4. Sea Hag
 5. Village
+
+Bugs Introduced:
+1. Smithy
+2. Adventurer
+3. Great Hall
+4. Sea Hag
