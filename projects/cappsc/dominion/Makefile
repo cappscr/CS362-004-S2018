@@ -66,4 +66,4 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe testIsGameOver testIsGameOver.exe testCompare testCompare.exe testFullDeckCount testFullDeckCount.exe testWhoseTurn testWhoseTurn.exe testAdvCard testAdvCard.exe testSmithyCard testSmithyCard.exe testCouncilCard testCouncilCard.exe testVillageCard testVillageCard.exe
