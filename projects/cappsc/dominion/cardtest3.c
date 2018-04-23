@@ -27,7 +27,7 @@ int asserttrue(int expression)
 
 int main() {
 
-    printf("TESTING Council Room Card ...\n\n");
+    printf("\n\nTESTING Council Room Card ...\n\n");
 
     //gameState
     struct gameState* G = newGame();

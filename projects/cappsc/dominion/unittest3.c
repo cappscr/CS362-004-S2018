@@ -32,7 +32,7 @@ int generateRandCard()
 
 int main() 
 {
-    printf("TESTING fullDeckCount ...\n\n");
+    printf("\n\nTESTING fullDeckCount ...\n\n");
     
     SelectStream(2);
     PutSeed(3);

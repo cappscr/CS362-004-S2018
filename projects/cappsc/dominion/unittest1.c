@@ -22,7 +22,7 @@ void asserttrue(int expression)
 int main() {
     struct gameState g;
     g.supplyCount[3] = 0;
-    printf("TESTING isGameOver ...\n\n");
+    printf("\n\nTESTING isGameOver ...\n\n");
     printf("When there are no province cards left game should be over. ");
     asserttrue(isGameOver(&g) == 1);
 

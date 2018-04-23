@@ -21,7 +21,7 @@ void asserttrue(int expression)
 
 int main() 
 {
-    printf("TESTING compare ...\n\n");
+    printf("\n\nTESTING compare ...\n\n");
     int test1, test2, test3, test4, test5;
     test1 = 0;
     test2 = 1;
