@@ -36,6 +36,37 @@ testCouncilCard: cardtest3.c dominion.o rngs.o
 testVillageCard: cardtest4.c dominion.o rngs.o
 	gcc  -o testVillageCard -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
 
+randTestAdvCard: randomtestadventurer.c dominion.o rngs.o
+	gcc  -o randTestAdvCard -g  randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+
+randTestSmithyCard: randomtestcard1.c dominion.o rngs.o
+	gcc  -o randTestSmithyCard -g  randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+randTestVillageCard: randomtestcard2.c dominion.o rngs.o
+	gcc  -o randTestVillageCard -g  randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+
+randomtestcard1.out: randTestSmithyCard
+	./randTestSmithyCard >> randomtestcard1.out
+	gcov dominion.c >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
+
+randomtestcard2.out: randTestVillageCard
+	./randTestVillageCard >> randomtestcard2.out
+	gcov dominion.c >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
+
+randomtestadventurer.out: randTestAdvCard
+	./randTestAdvCard &> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
+
+randtestresults.out: randTestAdvCard randTestSmithyCard randTestVillageCard
+	./randTestAdvCard &> randtestresults.out
+	./randTestSmithyCard >> randtestresults.out
+	./randTestVillageCard >> randtestresults.out
+	gcov dominion.c >> randtestresults.out
+	cat dominion.c.gcov >> randtestresults.out
+
 badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
 	gcc -o badTestDrawCard -g  badTestDrawCard.c dominion.o rngs.o $(CFLAGS)
 
@@ -66,4 +97,4 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe testIsGameOver testIsGameOver.exe testCompare testCompare.exe testFullDeckCount testFullDeckCount.exe testWhoseTurn testWhoseTurn.exe testAdvCard testAdvCard.exe testSmithyCard testSmithyCard.exe testCouncilCard testCouncilCard.exe testVillageCard testVillageCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe testIsGameOver testIsGameOver.exe testCompare testCompare.exe testFullDeckCount testFullDeckCount.exe testWhoseTurn testWhoseTurn.exe testAdvCard testAdvCard.exe testSmithyCard testSmithyCard.exe testCouncilCard testCouncilCard.exe testVillageCard testVillageCard.exe randTestVillageCard randTestVillageCard.exe randTestSmithyCard randTestSmithyCard.exe randTestAdvCard randTestAdvCard.exe
