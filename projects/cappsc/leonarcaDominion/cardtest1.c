@@ -57,7 +57,7 @@ int main() {
     }
 
     // call the smithy
-    smithyCard(G, &G->handCount[G->whoseTurn], &G->whoseTurn);
+    smithyImplementation(G->whoseTurn, G, G->handCount[G->whoseTurn]);
 
     // capture the post values
     int postSmithyHandSize[4];
