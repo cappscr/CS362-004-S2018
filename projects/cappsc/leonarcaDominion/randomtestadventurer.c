@@ -101,7 +101,7 @@ int main() {
     */
 
     // call function in a loop with randomly generated inputs
-    for (int n = 0; n < 2000; n++) {
+    for (int n = 0; n < 388; n++) {
         treasureCount = 0;
         printf("TEST ITERATION %d\n", n+1);
         for (int i = 0; i < sizeof(struct gameState); i++)

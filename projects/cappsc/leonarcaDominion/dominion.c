@@ -650,6 +650,7 @@ int getCost(int cardNumber)
 void adventurerImplementation(int drawntreasure, struct gameState *state, int currentPlayer, int temphand[], int z)
 {
 	int cardDrawn;
+  int shuffled = 0;
 	/*
 	bug introduction
 	subtle change to the search functionality
@@ -658,9 +659,21 @@ void adventurerImplementation(int drawntreasure, struct gameState *state, int cu
 	while (drawntreasure<2)
 	{
 		//if the deck is empty we need to shuffle discard and add to deck
-		if (state->deckCount[currentPlayer] <1)
+		if (state->deckCount[currentPlayer] <1 && shuffled <= 1)
 		{
+      if (shuffled == 1)
+        break;
+
+      for (int i = 0; i < state->discardCount[currentPlayer]; i++)
+      {
+        state->deck[currentPlayer][i] = state->discard[currentPlayer][i];
+        state->discard[currentPlayer][i] = 0;
+      }
+      state->deckCount[currentPlayer] = state->discardCount[currentPlayer];
+      state->discardCount[currentPlayer] = 0;
+
 			shuffle(currentPlayer, state);
+      shuffled = 1;
 		}
 
 		drawCard(currentPlayer, state);

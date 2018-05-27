@@ -96,6 +96,21 @@ unittestresults.out: testIsGameOver testCompare testFullDeckCount testWhoseTurn 
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 
+testresults.out: randTestAdvCard randTestSmithyCard randTestVillageCard testIsGameOver testCompare testFullDeckCount testWhoseTurn testSmithyCard testAdvCard testCouncilCard testVillageCard
+	./testIsGameOver &> testresults.out
+	./testCompare >> testresults.out
+	./testFullDeckCount >> testresults.out
+	./testWhoseTurn >> testresults.out
+	./testSmithyCard >> testresults.out
+	./testAdvCard >> testresults.out
+	./testCouncilCard >> testresults.out
+	./testVillageCard >> testresults.out
+	./randTestAdvCard &> testresults.out
+	./randTestSmithyCard >> testresults.out
+	./randTestVillageCard >> testresults.out
+	gcov dominion.c >> testresults.out
+	cat dominion.c.gcov >> testresults.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
