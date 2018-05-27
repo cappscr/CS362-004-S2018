@@ -60,7 +60,7 @@ int main() {
     int treasure = 0;
     int temphand[500];
     int z = 0;
-    adventurerCard(G, &treasure, &G->whoseTurn, temphand, &z);
+    adventurerImplementation(treasure, G, G->whoseTurn, temphand, z);
 
     // capture the post values
     int postAdvHandSize[4];
