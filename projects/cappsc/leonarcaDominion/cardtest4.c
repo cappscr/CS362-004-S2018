@@ -58,7 +58,7 @@ int main() {
     }
 
     // call the Village room
-    villageCard(G, &G->handCount[G->whoseTurn], &G->whoseTurn);
+    villageImplementation(G->whoseTurn, G, G->handCount[G->whoseTurn]);
 
     // capture the post values
     int postVillageHandSize[4];
