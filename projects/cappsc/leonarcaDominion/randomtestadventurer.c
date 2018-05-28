@@ -52,6 +52,7 @@ int testAdventurerCard(struct gameState *post, int cP)
     int r, a;
     int flag = 0;
 
+    //printf("Statement prior to adventurer card call\n");
     r = cardEffect(adventurer, 0, 0, 0, post, (post->handCount[cP] - 1), NULL);
     //printf("OUTSIDE cardEffect\n");
     // r should return 0

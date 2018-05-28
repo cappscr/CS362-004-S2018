@@ -659,7 +659,7 @@ void adventurerImplementation(int drawntreasure, struct gameState *state, int cu
 	while (drawntreasure<2)
 	{
 		//if the deck is empty we need to shuffle discard and add to deck
-		if (state->deckCount[currentPlayer] <1 && shuffled <= 1)
+		if (state->deckCount[currentPlayer] <1 )//&& shuffled <= 1)
 		{
       if (shuffled == 1)
         break;
@@ -709,7 +709,8 @@ void smithyImplementation(int currentPlayer, struct gameState *state, int handPo
 	int i;
 	for (i = 0; i < 5; i++)
 	{
-		drawCard(currentPlayer, state);
+    if (state->handCount[currentPlayer] < MAX_HAND)
+		  drawCard(currentPlayer, state);
 	}
 
 	//discard card from hand
