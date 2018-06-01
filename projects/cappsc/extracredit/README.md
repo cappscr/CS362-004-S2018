@@ -2,6 +2,8 @@
 
 Folder Structure
 
+UrlValidatorRandomTest.java contains the code that will execute a random jUnit test suite.
+
 ```
 |-- URLValidatorCorrect
     |-- bin
