@@ -2,12 +2,14 @@
 
 Folder Structure
 
+```
 |-- URLValidatorCorrect
     |-- bin
     |-- src
     |-- test
         |-- UrlValidatorRandomTest.java
         |-- UrlValidatorTest.java
+```
 
 ```
 extracredit
