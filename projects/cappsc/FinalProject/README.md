@@ -1,8 +1,10 @@
-Final Project:
+# Final Project Part B
 
-Part-A: Due date is Sunday, May 20th at 23:59 pm
-Part-b: Due date is Monday, June 11th at 23:59 pm
+## Carlos Leonard, Christopher Capps, Cody Schmidlin
 
+### CS 362-400-S2018
 
-
-
+Changes detailed below:
+1. 
+2. 
+3.
