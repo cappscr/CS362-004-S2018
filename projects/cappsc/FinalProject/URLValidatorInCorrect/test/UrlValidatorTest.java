@@ -21,7 +21,18 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
-//You can use this function to implement your manual testing	   
+	  //You can use this function to implement your manual testing
+	  UrlValidator urlVal = new UrlValidator(null, null, 0);
+	  
+	  for (int i = 0; i < manualTestUrls.length; i++) {
+		  boolean result = urlVal.isValid(manualTestUrls[i]);
+		  assertEquals(manualTestUrls[i], true, result);
+	  }
+	  
+	  for (int i = 0; i < manualTestInvalidUrls.length; i++) {
+		  boolean result =  urlVal.isValid(manualTestInvalidUrls[i]);
+		  assertEquals(manualTestInvalidUrls[i], false, result);
+	  }
 	   
    }
    
@@ -44,6 +55,22 @@ public class UrlValidatorTest extends TestCase {
 
    }
    
+   // Used for debug only
+   public static void main(String[] argv) {
+
+	  UrlValidatorTest fct = new UrlValidatorTest("url test");
+      //fct.setUp();
+      fct.testManualTest();
+   }
+   
+   String[] manualTestUrls = {//"http://www.google.com", 
+		   					  //"https://www.bankofamerica.com", 
+		   					  //"ftp://172.16.254.1:8000", 
+		   					  //"http://www.google.com/search?key=star_wars", 
+		   					  //"mailto:cappsc@oregonstate.edu"
+		   };
+   
+   String[] manualTestInvalidUrls = {"h3tp:www.google.com", "https://www.bank/ofamerica.com=?#", "ftp://200.456.999.123:78000", "http://www.google.com//", "mailto:cappscoregonstate"};
 
 
 }
