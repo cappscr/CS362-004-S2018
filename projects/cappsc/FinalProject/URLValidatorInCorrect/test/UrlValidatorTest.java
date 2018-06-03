@@ -22,15 +22,25 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	  //You can use this function to implement your manual testing
-	  UrlValidator urlVal = new UrlValidator(null, null, 0);
+	  UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 	  
 	  for (int i = 0; i < manualTestUrls.length; i++) {
-		  boolean result = urlVal.isValid(manualTestUrls[i]);
+		  boolean result = true;
+		  try {
+			  result = urlVal.isValid(manualTestUrls[i]);
+		  } catch (Error err) {
+			  System.out.println(err);
+		  }
 		  assertEquals(manualTestUrls[i], true, result);
 	  }
 	  
 	  for (int i = 0; i < manualTestInvalidUrls.length; i++) {
-		  boolean result =  urlVal.isValid(manualTestInvalidUrls[i]);
+		  boolean result = false;
+		  try {
+			result = urlVal.isValid(manualTestInvalidUrls[i]);
+		  } catch (Error err) {
+			System.out.println(err);
+		  }
 		  assertEquals(manualTestInvalidUrls[i], false, result);
 	  }
 	   
@@ -63,14 +73,19 @@ public class UrlValidatorTest extends TestCase {
       fct.testManualTest();
    }
    
-   String[] manualTestUrls = {//"http://www.google.com", 
-		   					  //"https://www.bankofamerica.com", 
-		   					  //"ftp://172.16.254.1:8000", 
-		   					  //"http://www.google.com/search?key=star_wars", 
-		   					  //"mailto:cappsc@oregonstate.edu"
+   String[] manualTestUrls = {"http://www.google.com", 
+		   					  "https://www.bankofamerica.com", 
+		   					  "ftp://172.16.254.1:8000", 
+		   					  "http://www.google.com/search?key=star_wars", 
+		   					  //"http://go.com/$23/file?action=edit&mode=up"
 		   };
    
-   String[] manualTestInvalidUrls = {"h3tp:www.google.com", "https://www.bank/ofamerica.com=?#", "ftp://200.456.999.123:78000", "http://www.google.com//", "mailto:cappscoregonstate"};
+   String[] manualTestInvalidUrls = {"://www.google.com", 
+		   							"https://1.2.3.4.5?#", 
+		   							"ftp://200.456.999.123:78000", 
+		   							"http://www.google.com/test1//file", 
+		   							"mailto:cappscoregonstate"
+		   							};
 
 
 }
