@@ -84,7 +84,8 @@ protected void setUp() {
 	      UrlValidator urlVal = new UrlValidator(null, null, allowAllSchemes);
 	      //UrlValidator urlVal = new UrlValidator(null, allowAllSchemes);
       assertTrue(urlVal.isValid("http://www.google.com"));
-      assertTrue(urlVal.isValid("http://www.google.com/"));
+      boolean result = urlVal.isValid("http://go.com/$23/file?action=edit&mode=up");
+      assertEquals("go.com/$23/file?action=edit&mode=up", true, result);
       int statusPerLine = 60;
       int printed = 0;
       if (printIndex)  {
@@ -100,7 +101,7 @@ protected void setUp() {
             expected &= part[index].valid;
          }
          String url = testBuffer.toString();
-         boolean result = urlVal.isValid(url);
+         result = urlVal.isValid(url);
          if(result == true)
         	 System.out.println(url);
          assertEquals(url, expected, result);
