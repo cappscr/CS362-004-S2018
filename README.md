@@ -6,4 +6,4 @@ CS 362. SOFTWARE ENGINEERING II Spring 2018 (Ecampus-Distance Education)
 ### Carlos Leonard, Christopher Capps, Cody Schmidlin
 
 Source code is located at:
-`./projects/capps/FinalProject/URLValidatorInCorrect`
+`./projects/cappsc/FinalProject/URLValidatorInCorrect`
