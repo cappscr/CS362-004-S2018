@@ -27,9 +27,9 @@ public class UrlValidatorTest extends TestCase {
 		 //assertTrue(!(urlVal.isValid("ftp://200.456.999.123:78000"))); 
 		 assertTrue(urlVal.isValid("http://www.google.com/search?q=star+wars"));
 		 //assertTrue(urlVal.isValid("mailto:cappsc@oregonstate.edu")); 
-		 //assertTrue(!(urlVal.isValid("://www.google.com"))); 
+		 assertTrue(!(urlVal.isValid("://www.google.com"))); 
 		 assertTrue(!(urlVal.isValid("http://www.google.com/test1//file"))); 
-		 //assertTrue(!(urlVal.isValid("mailto:cappscoregonstate"))); 
+		 assertTrue(!(urlVal.isValid("mailto:cappscoregonstate"))); 
 		 //assertTrue(urlVal.isValid("h3t://255.com:80/$23/t123/file?action=view")); 
 } 
    
