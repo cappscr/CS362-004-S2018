@@ -8,10 +8,6 @@ import java.util.List;
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
 // Again, it is up to you to use this file or not!
 
-
-
-
-
 public class UrlValidatorTest extends TestCase {
 
 
@@ -19,75 +15,22 @@ public class UrlValidatorTest extends TestCase {
       super(testName);
    }
 
-   
-   
    public void testManualTest(){
 	   	 System.out.println("-------------------------------------------------------------------------------------------------");
 	   	 System.out.println("MANUAL TEST");
 	     //Mixed URL set
-	   	 int correctCount = 0;
-		 int incorrectCount = 0;
 		 UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-		 int urlAmount = manualTestUrls.length;
-		 int i;
-		 boolean result = true;
-		 for (i = 0; i < urlAmount; i++) {
-			try {
-				result = urlVal.isValid(manualTestUrls[i]);
-			}catch (Error err) {
-				//System.out.println(err);
-			}
-			
-			if (manualTestUrls[i] == "http://www.google.com" && result == true) {
-				correctCount++;
-				System.out.println(manualTestUrls[i] + " is VALID!");
-			}
-			if (manualTestUrls[i] == "https://www.bankofamerica.com" && result == true) {
-				correctCount++;
-				System.out.println(manualTestUrls[i] + " is VALID!");
-			}
-			if (manualTestUrls[i] == "ftp://172.16.254.1:8000" && result == true) {
-				correctCount++;
-				System.out.println(manualTestUrls[i] + " is VALID!");
-			}
-			if (manualTestUrls[i] == "http://www.google.com/search?key=star_wars" && result == true) {
-				correctCount++;
-				System.out.println(manualTestUrls[i] + " is VALID!");
-			}
-			
-			if (manualTestUrls[i] == "://www.google.com" && result == false) {
-				incorrectCount++;
-				System.out.println(manualTestUrls[i] + " is INVALID!");
-			}
-			if (manualTestUrls[i] == "https://1.2.3.4.5?#" && result == false) {
-				incorrectCount++;
-				System.out.println(manualTestUrls[i] + " is INVALID!");
-			}
-			if (manualTestUrls[i] == "ftp://200.456.999.123:78000" && result == false) {
-				incorrectCount++;
-				System.out.println(manualTestUrls[i] + " is INVALID!");
-			}
-			if (manualTestUrls[i] == "http://www.google.com/test1//file" && result == false) {
-				incorrectCount++;
-				System.out.println(manualTestUrls[i] + " is INVALID!");
-			}
-			if (manualTestUrls[i] == "mailto:cappscoregonstate" && result == false) {
-				incorrectCount++;
-				System.out.println(manualTestUrls[i] + " is INVALID!");
-			}
-			
-		 }
-		 
-		 System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		 if ( incorrectCount == 5 && correctCount == 4) {
-			 System.out.println("TEST PASSED! - THE CORRECT AMOUNT OF VALID AND INVALID URLS WERE FOUND");
-		 }
-		 else {
-			 System.out.println("TEST FAILED! - THE CORRECT AMOUNT OF VALID AND INVALID URLS WAS NOT FOUND");
-			 System.out.println("CORRECT URLS = " + correctCount + " INCORRECT URLS = " + incorrectCount);
-		 }
-		 System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
+		 assertTrue(urlVal.isValid("http://www.google.com")); 
+		 //assertTrue(urlVal.isValid("https://www.bankofamerica.com")); 
+		 //assertTrue(urlVal.isValid("ftp://172.16.254.1:8000")); 
+		 //assertTrue(urlVal.isValid("https://1.2.3.4.5?#")); 
+		 //assertTrue(!(urlVal.isValid("ftp://200.456.999.123:78000"))); 
+		 assertTrue(urlVal.isValid("http://www.google.com/search?q=star+wars"));
+		 //assertTrue(urlVal.isValid("mailto:cappsc@oregonstate.edu")); 
+		 //assertTrue(!(urlVal.isValid("://www.google.com"))); 
+		 assertTrue(!(urlVal.isValid("http://www.google.com/test1//file"))); 
+		 //assertTrue(!(urlVal.isValid("mailto:cappscoregonstate"))); 
+		 //assertTrue(urlVal.isValid("h3t://255.com:80/$23/t123/file?action=view")); 
 } 
    
    
@@ -252,6 +195,8 @@ public class UrlValidatorTest extends TestCase {
    
    public void testIsValid()
    {
+	     System.out.println("-------------------------------------------------------------------------------------------------");
+		 System.out.println("UNIT TESTS");
 	   // creating an object instance
 	   UrlValidator urlVal= new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
 	   
@@ -354,23 +299,24 @@ public class UrlValidatorTest extends TestCase {
 	  UrlValidatorTest fct = new UrlValidatorTest("url test");
       //fct.setUp();
       fct.testManualTest();
-	  fct.testFirstPartition();
-	  fct.testSecondPartition();
-	  fct.testThirdPartition();
-	  fct.testFourthPartition();
-	  fct.testIsValid();
+	  //fct.testFirstPartition();
+	  //fct.testSecondPartition();
+	  //fct.testThirdPartition();
+	  //fct.testFourthPartition();
+	  //fct.testIsValid();
    }
    
    // Manual test Strings 4 correct 5 incorrect
    String[] manualTestUrls = {"http://www.google.com", 
 			 				 "https://www.bankofamerica.com", 
 			 				 "ftp://172.16.254.1:8000", 
-			 				 "http://www.google.com/search?key=star_wars",
+			 				 "http://www.google.com/search?q=star+wars",
 			 				 "://www.google.com", 
 							 "https://1.2.3.4.5?#", 
 							 "ftp://200.456.999.123:78000", 
 							 "http://www.google.com/test1//file", 
-							 "mailto:cappscoregonstate"
+							 "mailto:cappscoregonstate",
+							 "h3t://255.com:80/$23/t123/file?action=view"
 							};
    
    // All Correct URL parts
